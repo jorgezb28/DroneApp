@@ -1,0 +1,43 @@
+﻿<div class="row">
+    <p class="col-md-12">Please add the instructions following the next pattern.<strong class="text-danger">Please avoid add empty lines instructions</strong></p>
+    <br />
+    <p class="col-md-12">
+        To define number of drones: <br />
+        <strong> Drone Name1,MaxWeight,Drone Name2,MaxWeight,...,Drone NameN,MaxWeightN</strong>
+    </p>
+    <br />
+    <p class="col-md-12">
+        To define locations: <br />
+        <strong> Location Name1,PackageWeight1<br />Location Name2,PackageWeight2<br />.<br />.<br />.<br />Location NameN,PackageWeightN</strong>
+    </p>
+    <div class="form-group col-md-8">
+        <textarea class="col-md-12" @bind="Instructions" />
+        @if (!string.IsNullOrWhiteSpace(Error))
+        {
+            <p class="text-danger">@Error</p>
+        }
+        <button class="btn btn-primary" @onclick="ProcessDelivery">Process Deliveries</button>
+    </div>
+    @if (DroneDeliveries != null && DroneDeliveries.Any())
+    {
+        <div class="col-md-8">
+            <h5 class="text-primary">Output</h5>
+            @foreach (var drone in DroneDeliveries)
+            {
+                <label class="text-secondary">Drone: @drone.Name </label><br />
+                @foreach (var trip in drone.Trips)
+                {
+                    <label class="text-dark">Trip # @trip.Number </label>
+                    <p class="text-info">
+                        @foreach (var location in trip.Locations)
+                        {
+                            @(location.Name+",")
+                        }
+                    </p>
+                    <br />
+                }
+                <br />
+            }
+        </div>
+    }
+</div>

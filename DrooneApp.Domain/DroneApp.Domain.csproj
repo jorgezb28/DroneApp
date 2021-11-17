@@ -1,0 +1,21 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net5.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Entities\" />
+    <None Remove="DomainServices\" />
+    <None Remove="DomainServices\Contracts\" />
+    <None Remove="Enums\" />
+    <None Remove="Common\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Entities\" />
+    <Folder Include="DomainServices\" />
+    <Folder Include="DomainServices\Contracts\" />
+    <Folder Include="Enums\" />
+    <Folder Include="Common\" />
+  </ItemGroup>
+</Project>
